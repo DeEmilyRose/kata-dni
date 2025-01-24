@@ -1,5 +1,5 @@
-from tablaAsignacion import TablaAsignacion
-from class_colors import Colors
+from src.tablaAsignacion import TablaAsignacion
+from src.class_colors import Colors
 
 
 class Dni:

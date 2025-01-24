@@ -1,4 +1,4 @@
-from class_colors import Colors
+from src.class_colors import Colors
 
 
 class TablaAsignacion:
