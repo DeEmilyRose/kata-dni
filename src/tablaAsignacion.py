@@ -32,19 +32,19 @@ class TablaAsignacion:
             "E",
         ]
 
-    def getTabla(self):
+    def getTabla(self):  #encapsulando la tabla
         return self.tabla
 
-    def getLetra(self, posicion):
+    def getLetra(self, posicion):  #encapsulando la posición en la tabla
         try:
             return self.tabla[posicion]
         except IndexError:
             return "Posicion letra fuera de rango"
 
-    def getModulo(self):
+    def getModulo(self):  #encapsulando el largo/tamaño de la tabla
         return len(self.getTabla())
 
-    def isLetraPermitida(self, letra):
+    def isLetraPermitida(self, letra):  #encapsulando el recorrido en la tabla
         return letra in self.getTabla()
 
     def calcularLetra(self, DNI):
@@ -52,10 +52,10 @@ class TablaAsignacion:
         # Dividirlo por el número de letras (actualmente 23)
         # y obtener el resto (división módulo)
         # Consultar TablaAsignacion con ese resto = posicion
-        posicion = int(DNI) % self.getModulo()
-        return self.getLetra(posicion)
+        posicion = int(DNI) % self.getModulo()  # el DNI lo tomamos con un número entero y lo dividimos entre el tamaño de la tabla
+        return self.getLetra(posicion)          # retorna la letra con la posición que ocupa en la tabla 
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:          #esta representando la tabla en un string con cada letra debajo de la otra
         return "\n".join(self.getTabla())
 
 
@@ -124,8 +124,8 @@ if __name__ == "__main__":
     print(casosTest)
 
     for dni in casosTest:
-        if tabla.calcularLetra(dni[:-1]) == dni[-1]:
-            print(f"{dni} {Colors.OKGREEN} OK {Colors.ENDC}")
+        if tabla.calcularLetra(dni[:-1]) == dni[-1]: # le quita el ultimo valor al DNI, utiliza el resto para generar una letra con la función 
+            print(f"{dni} {Colors.OKGREEN} OK {Colors.ENDC}") #y verifica que sean iguales, comparandola con el string original
         else:
             # print("%s %s" % (dni, Colors.FAIL + "FAIL" + Colors.ENDC))
             print(f"{dni} {Colors.FAIL} FAIL {Colors.ENDC}")
